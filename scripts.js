@@ -1,28 +1,36 @@
-const hexOptions = ["red", "yellow", "white", "black", "green", "blue"];
+fetch('http://54.uz/rang.php')
+.then(response => response.json())
+	.then(data => {
+		const color = data.status
+		const status = document.querySelector(".status")
+		status.textContent = color
 
-const currentColor = document.getElementById("currentColor");
-const getNewColor = document.getElementById("getNewColor");
+		if ( color === 'sariq') {
+			document.body.style.backgroundColor = 'yellow'
+		}
+	
+		else if ( color === 'qora') {
+			document.body.style.backgroundColor = 'black';
+			status.style.color = 'white'
+		}
+	
+		else if ( color === 'qizil') {
+			document.body.style.backgroundColor = 'red'
+		}
+	
+		else if ( color === 'yaxshil') {
+			document.body.style.backgroundColor = 'green'
+		}
+	
+		else if ( color === 'ko\'k') {
+			document.body.style.backgroundColor = 'blue'
+		}
 
-getNewColor.addEventListener("click", setHex);
+		else if ( color === 'oq') {
+			status.style.color = 'black'
+		}
 
-function getHex() {
-	let color = "";
-		color += hexOptions[getRandomNumber()];
-		console.log(getRandomNumber);
-		console.log(color);
-	return color
-}
+	})
 
-function getRandomNumber() {
-	return Math.floor(Math.random() * hexOptions.length);
-}
-getHex ();
 
-function setHex() {
-	let color = getHex();
-	currentColor.textContent = color;
-	document.body.style.backgroundColor = color;
-}
-
-setHex();
 
